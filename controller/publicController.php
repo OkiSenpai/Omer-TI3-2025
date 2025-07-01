@@ -1,27 +1,31 @@
 <?php
 
 require_once "../model/utilisateursModel.php";
+require_once "../model/localisationsModel.php";
+// pour charger les articles en json
+if (isset($_GET['json'])) {
+    $localisations = selectAllFromLocalisations($db);
+    echo json_encode($localisations);
+    exit();
+}
+
 
 
 if (isset($_GET['page']) && $_GET['page'] === 'login') {
-    header("Location: ../view/public/login.php");
-
+    $error = null;
     if (isset($_POST['login']) && isset($_POST['password'])) {
-        
         $login = $_POST['login'];
         $password = $_POST['password'];
 
         if (authentificateActivedUser($db, $login, $password)) {
-            header("Location: ../view/public/home.php");
+            header("Location: ./?page=admin");
             exit;
         } else {
-            echo "Login failed. Please try again.";
+            $error = "Login failed  try again.";
         }
     }
-   
+    require_once "../view/public/login.php";
+    exit;
 }
 
 require_once "../view/public/home.php";
-require_once "../model/localisationsModel.php";
-
-?>
