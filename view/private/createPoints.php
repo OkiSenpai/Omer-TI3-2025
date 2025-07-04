@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php require_once "../view/public/nav.php"; ?>
     <div class="container mt-5">
         <h1>Ajouter un point</h1>
-        <form method="post" action="">
+        <form class="<?= $displayForm ?>" method="post" action="">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>
@@ -44,6 +42,11 @@ if (session_status() === PHP_SESSION_NONE) {
             <button type="submit" class="btn btn-success">Ajouter</button>
         </form>
     </div>
+    <?php if (isset($jsRedirect)):
+        echo $jsRedirect ?>
+        <div class="alert alert-success">✅ Vouz etes bien ajuté une localisation... un instant svp...</div>
+
+    <?php endif; ?>
 </body>
 
 </html>
