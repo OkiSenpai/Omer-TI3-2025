@@ -26,7 +26,7 @@
 
     .imgContainerLogin {
   
-      height: 100%;
+   
       overflow: hidden;
       padding: 0;
     }
@@ -65,8 +65,8 @@
   <?php require_once "../view/public/nav.php"; ?>
 
   <section class="vh-80">
-    <div class="container-fluid h-100">
-      <div class="row h-100">
+    <div class="container-fluid" style="max-height: 100%;">
+      <div class="row" style="max-height:60vh;">
         <div
           class="col-sm-6 d-flex flex-column justify-content-center align-items-center text-black"
           style="padding: 2rem"
@@ -110,7 +110,7 @@
           </form>
         </div>
 
-        <div class="col-sm-6 px-0 imgContainerLogin d-none d-md-flex justify-content-center align-items-center">
+        <div class="col-sm-6 px-0 imgContainerLogin d-none d-md-flex justify-content-center align-items-center"  style="max-height:80vh;">
           <img src="../public/assets/bruxelles.webp" alt="Login image" />
         </div>
       </div>

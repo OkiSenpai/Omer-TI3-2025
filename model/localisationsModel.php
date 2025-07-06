@@ -3,7 +3,7 @@
  * @param PDO $db
  * @return array
  */
-
+ $errorMessage="";
 
 function selectAllFromLocalisations(PDO $db): array
 {
@@ -23,6 +23,7 @@ function selectAllFromLocalisations(PDO $db): array
 
 function insertLocalisation(PDO $db, $localisation)
 {
+     $errorMessage="";
     $nom = htmlspecialchars((trim($localisation['nom'])), ENT_QUOTES);
     $adresse = htmlspecialchars(trim($localisation['adresse']), ENT_QUOTES);
     $codepostal = htmlspecialchars(trim(strip_tags($localisation['codepostal'])), ENT_QUOTES);
@@ -32,7 +33,9 @@ function insertLocalisation(PDO $db, $localisation)
 
 
     if (empty($nom) || strlen($nom) > 50 || empty($adresse) || strlen($adresse) > 50 || empty($codepostal) || strlen($codepostal) !== 4 || empty($ville) || strlen($ville) > 30 || empty($latitude) || strlen($latitude) > 15 || strlen($latitude) < 1 || empty($longitude) || strlen($longitude) > 15) {
+        $errorMessage = "Veuillez remplir tous les champs correctement.";
         return false;
+
     }
 
     $sql = "INSERT INTO localisations (nom, adresse, codepostal, ville, latitude, longitude)

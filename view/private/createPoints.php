@@ -1,5 +1,5 @@
 <?php
-
+require_once "../model/localisationsModel.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,18 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-  
-      html, body {
-        height: 100%;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      main {
-        flex: 1;
-      }
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .errorMessage {
+            width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -57,8 +64,14 @@
             </div>
             <button type="submit" class="btn btn-success w-100">Ajouter</button>
         </form>
+        <?php if (!isset($jsRedirect)): ?>
+            <div class="alert alert-danger mt-4 text-center errorMessage <?= $displayError ?>">
+           Il faut remplir ce formulaire correctement!       
+        </div>
+        <?php endif; ?>
 
-        <?php if (isset($jsRedirect)) : ?>
+
+        <?php if (isset($jsRedirect)): echo $jsRedirect ?>
             <div class="alert alert-success mt-4 text-center">
                 ✅ Vous êtes bien ajouté une localisation... un instant svp...
             </div>
@@ -66,7 +79,7 @@
         <?php endif; ?>
     </main>
 
-<?php require_once "../view/public/footer.php"; ?>
+    <?php require_once "../view/public/footer.php"; ?>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

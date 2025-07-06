@@ -21,31 +21,32 @@ if (!isset($_GET['page'])) {
     exit();
 } elseif ($_GET['page'] === 'admin') {
 
-    $db = new PDO(DB_DSN, DB_LOGIN, DB_PWD);
+   
     $localisations = selectAllFromLocalisations($db);
     require_once "../view/private/admin.php";
 } elseif ($_GET['page'] === 'create') {
     $displaySucces = "d-none";
-    $displayError = "d-none";
-    $displayForm = "";
+        $displayError = "d-none";
+        $displayForm = "";
+        // si on a envoyé le formulaire pour insérer un article
+        if (isset($_POST['nom'], $_POST['adresse'])) {
 
-
-    if (!empty($_POST)) {
-
-        if (insertLocalisation($db, $_POST)) {
-
-
-            $displayForm = "d-none";
-            $jsRedirect = "<script>
-            setTimeout(() => {
-         window.location.href = './?page=admin';
-        }, 2000); // Redirects after 2 seconds
-        </script>";
-
-        }
-
-        // header("Location: ./?page=admin");
-        // exit;
+            // id de l'utilisateur connexté
+            $insert = insertlocalisation($db, $_POST);
+            if ($insert) {
+                // affichage du bloc de succès
+                $displaySucces = "";
+                // on cache le formulaire
+                $displayForm = "d-none";
+                // création d'un javascript
+                $jsRedirect = "<script>
+    setTimeout(() => {
+  window.location.href = './?page=admin';
+}, 3000); // Redirects after 3 seconds
+</script>";
+            } else {
+                $displayError = "";
+            }
     }
 
     require_once "../view/private/createPoints.php";
