@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un point</title>
+    <title>Ajouter | TI3-2025</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -47,6 +47,12 @@
         <div class="alert alert-success">✅ Vouz etes bien ajuté une localisation... un instant svp...</div>
 
     <?php endif; ?>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- JS de markerCluster -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 </body>
 
 </html>

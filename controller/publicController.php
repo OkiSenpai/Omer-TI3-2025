@@ -27,7 +27,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'login') {
             $displayForm = "d-none";
             $jsRedirect = "<script>
     setTimeout(() => {
-  window.location.href = './?pg=admin';
+  window.location.href = './?page=admin';
 }, 2000); // Redirects after 2 seconds
 </script>";
             // header("Location: ./?page=admin");
@@ -38,6 +38,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'login') {
     }
     require_once "../view/public/login.php";
     exit;
+}else{
+    require_once "../view/public/home.php";
 }
 
-require_once "../view/public/home.php";
