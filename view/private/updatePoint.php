@@ -1,5 +1,5 @@
 <?php
-// Pretpostavljam da su $localisation, $localisations, $displayForm, $jsRedirect već postavljeni u kontroleru
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +32,17 @@
             width: 100%;
             height: 100%;
         }
+              html, body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
     </style>
 </head>
 
@@ -75,13 +86,10 @@
                     </div>
                     <button type="submit" class="btn btn-success">Update</button>
                 </form>
-                <?php if (isset($jsRedirect)):
-                    echo $jsRedirect ?>
-                    <div class="alert alert-success">✅ Vouz avez bien modifié... un instant... </div>
-                <?php endif; ?>
+ 
             </div>
             <!-- Lista lokalizacija -->
-            <div class="col-md-6" id="list">
+            <div class="col-md-6 <?= $displayForm ?> " id="list">
                 <h3>Liste de localisations</h3>
                 <ul class="list-group point-list" id="pointList">
                     <div class="loading">Chargement des localisations...</div>
@@ -90,6 +98,11 @@
             </div>
         </div>
     </div>
+                   <?php if (isset($jsRedirect)):
+                    echo $jsRedirect ?>
+                    <div class="alert alert-success text-center w-50 mx-auto " >✅ Vouz avez bien modifié... un instant... </div>
+                <?php endif; ?>
+    <?php require_once "../view/public/footer.php"; ?>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

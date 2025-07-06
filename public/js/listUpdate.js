@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pointList = document.getElementById("pointList");
     if (!pointList) return;
 
-    fetch("?json")
+    fetch("./?json")
         .then(response => response.json())
         .then(data => {
             pointList.innerHTML = "";

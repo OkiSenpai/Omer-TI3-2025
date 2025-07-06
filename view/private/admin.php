@@ -33,6 +33,18 @@
             background: #343a40;
             color: #fff;
         }
+              html, body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
+    
     </style>
 </head>
 
@@ -80,10 +92,10 @@
                                         <td><?= $loc['latitude'] ?></td>
                                         <td><?= $loc['longitude'] ?></td>
                                         <td>
-                                            <a href="./?page=update&id=<?= $loc['id'] ?>" class="btn btn-warning btn-sm">
+                                            <a href="./?page=update&id=<?= $loc['id'] ?>" class="btn btn-warning btn-sm btnAdmin w-100">
                                                 <i class="bi bi-pencil"></i> Update
                                             </a>
-                                            <a href="./?page=delete&id=<?= $loc['id'] ?>" class="btn btn-danger btn-sm mt-2"
+                                            <a href="./?page=delete&id=<?= $loc['id'] ?>" class="btn btn-danger btn-sm mt-2 btnAdmin w-100"
                                                 onclick="return confirm('Vous êtes sûr de vouloir supprimer <?= $loc['nom'] ?> ?');">
                                                 <i class="bi bi-trash"></i> Delete
                                             </a>
@@ -103,9 +115,7 @@
         </div>
     </main>
 
-    <footer class="text-center mt-5 mb-3 text-muted">
-        &copy; <?= date('Y') ?> TI3-2025 | Admin
-    </footer>
+    <?php require_once "../view/public/footer.php"; ?>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
@@ -113,4 +123,3 @@
 </body>
 
 </html>
-sdqd

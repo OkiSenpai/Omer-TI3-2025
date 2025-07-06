@@ -7,6 +7,9 @@
   height: 500px;
   overflow: auto;
 }
+.btnAdmin {
+  width:90px
+}
 
 .hHome {
   text-align: center;
@@ -40,6 +43,12 @@
     display: none;
   }
 }
+@media screen and (max-width: 975px) {
+  .btnAdmin {
+    width: 65px;
+  }
+}
+
 
 #center {
   display: flex;
@@ -51,3 +60,4 @@
   margin: 0 5px;
   color: gray;
 }
+
