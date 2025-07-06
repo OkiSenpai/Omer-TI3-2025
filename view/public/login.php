@@ -58,15 +58,20 @@
       main {
         flex: 1;
       }
+    .section {
+      width: 80%;
+      margin: 0 auto;
+      max-width: 1200px ;
+    }
   </style>
 </head>
 
 <body>
   <?php require_once "../view/public/nav.php"; ?>
 
-  <section class="vh-80">
+  <section class="vh-80 section" >
     <div class="container-fluid" style="max-height: 100%;">
-      <div class="row" style="max-height:60vh;">
+      <div class="row " style="max-height:60vh;">
         <div
           class="col-sm-6 d-flex flex-column justify-content-center align-items-center text-black"
           style="padding: 2rem"

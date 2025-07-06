@@ -115,3 +115,17 @@ function selectLocalisationById(PDO $db, $id)
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function selectAllFromOldLocalisations(PDO $db): array
+{
+    $sql = "SELECT * FROM `localisations_old` ORDER BY deleted_at DESC";
+
+    try {
+        $query = $db->query($sql);
+        $res = $query->fetchAll();
+        $query->closeCursor();
+        return $res;
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}

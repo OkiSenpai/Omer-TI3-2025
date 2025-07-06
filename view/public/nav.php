@@ -1,4 +1,24 @@
 <?php
+// création des variables vides pour éviter l'erreur d'about
+$activeHome = $activeCreate = $activeAdmin = $activelogIn = $activeOld = "";
+if (isset($_GET['page'])) {
+    switch ($_GET['page']) {
+        case "create":
+            $activeCreate = "active";
+            break;
+        case "admin":
+            $activeAdmin = "active";
+            break;
+        case "login":
+            $activelogIn = "active";
+            break;
+        case "old":
+            $activeOld = "active";
+            break;
+    }
+} else {
+    $activeHome = "active";
+}
 
 
 ?>
@@ -12,21 +32,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./">Home</a>
+                    <a class="nav-link <?= $activeHome ?> " href="./">Home</a>
                 </li>
                 <?php if (isset($_SESSION['login'])): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="./?page=admin">Admin</a>
+                        <a class="nav-link <?= $activeAdmin ?>" href="./?page=admin">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./?page=create">Create Point</a>
+                        <a class="nav-link <?= $activeOld  ?>" href="./?page=old">Old Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./?page=dec">Logout</a>
+                        <a class="nav-link <?= $activeCreate ?>" href="./?page=create">Create Point</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="./?page=dec">Logout</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="./?page=login">Login</a>
+                        <a class="nav-link <?= $activelogIn ?>" href="./?page=login">Login</a>
                     </li>
                 <?php endif; ?>
             </ul>
