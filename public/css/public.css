@@ -1,16 +1,54 @@
-@media screen and (min-width: 640px) {
-  #carte {
-    height: 500px;
-    width: 640px;
-    border: 1px solid #ccc;
-  }
+#carte {
+  height: 500px;
+  width: 640px;
+  border: 1px solid #ccc;
+}
+#list {
+  height: 500px;
+  overflow: auto;
+}
+.btnAdmin {
+  width:90px
+}
 
+.hHome {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 640px) {
   #carte-container {
     display: grid;
     grid-template-columns: 50% 50%;
     justify-items: center;
+    gap: 20px;
   }
 }
+
+@media screen and (max-width: 639px) {
+  #carte-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  #carte {
+    width: 100%;
+    min-height: 300px;
+    height: 40vw;
+    max-height: 350px;
+    border: 1px solid #ccc;
+  }
+  .imgContainerLogin{
+    display: none;
+  }
+}
+@media screen and (max-width: 975px) {
+  .btnAdmin {
+    width: 65px;
+  }
+}
+
 
 #center {
   display: flex;
@@ -18,8 +56,8 @@
   align-items: center;
   margin-bottom: 25px;
 }
-
-#list {
-  height: 500px;
-  overflow: auto;
+.separator {
+  margin: 0 5px;
+  color: gray;
 }
+

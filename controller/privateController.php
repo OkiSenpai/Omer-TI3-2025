@@ -71,10 +71,14 @@ if (!isset($_GET['page'])) {
          window.location.href = './?page=admin';
         }, 2000); // Redirects after 2 seconds
         </script>";
+        $localisations = selectAllFromLocalisations($db);
         require_once "../view/private/updatePoint.php";
     } else {
         $localisation = selectLocalisationById($db, $id);
+         $localisations = selectAllFromLocalisations($db);
         require_once "../view/private/updatePoint.php";
         exit;
     }
+}else{
+   header("Location: ./");
 }

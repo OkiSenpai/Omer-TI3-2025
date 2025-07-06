@@ -2,51 +2,122 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | TI3-2025</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
+
+    .vh-100 {
+      height: 100vh;
+    }
+
+    .imgContainerLogin {
+  
+      height: 100%;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .imgContainerLogin img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain; 
+    }
+
+   
+    @media (max-width: 767.98px) {
+      .imgContainerLogin {
+        height: 200px; 
+      }
+    }
+     html, body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
+  </style>
 </head>
 
 <body>
   <?php require_once "../view/public/nav.php"; ?>
 
-  <div class="container mt-5 w-25">
+  <section class="vh-80">
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <div
+          class="col-sm-6 d-flex flex-column justify-content-center align-items-center text-black"
+          style="padding: 2rem"
+        >
+          <form style="width: 23rem;" method="post" action="">
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
-    <?php if (isset($error)): ?>
-      <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="login">User Name</label>
+              <input
+                type="text"
+                id="login"
+                name="login"
+                class="form-control form-control-lg"
+                required
+              />
+            </div>
 
-    <?php if (isset($jsRedirect)): ?>
-      <div class="alert alert-success">✅ Vouz etes bien conecté... un instant...</div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control form-control-lg"
+                required
+              />
+            </div>
 
-    <?php endif; ?>
+            <div class="pt-1 mb-4">
+              <button class="btn btn-info btn-lg w-100" type="submit">Login</button>
+            </div>
 
-    <form class="<?= $displayForm ?>" method="post" action="">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="login">
+            <?php if (isset($error)) : ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
+
+          <?php if(isset($jsRedirect)): echo $jsRedirect;?>
+            <div class="alert alert-success">✅ Vous êtes bien connecté... un instant...</div>
+            <?php endif; ?>
+          </form>
+        </div>
+
+        <div class="col-sm-6 px-0 imgContainerLogin d-none d-md-flex justify-content-center align-items-center">
+          <img src="../public/assets/bruxelles.webp" alt="Login image" />
+        </div>
       </div>
-      <div class="form-group mt-2">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-      </div>
-      <button type="submit" class="btn btn-primary mt-3">Submit</button>
-    </form>
-
-    <?php
-    // Ako je login uspešan, pokreće se JS redirect
-    if (isset($jsRedirect)) {
-      echo $jsRedirect;
-    }
-    ?>
-
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"></script>
+    </div>
+  </section>
+<?php require_once "../view/public/footer.php"; ?>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
